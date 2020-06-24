@@ -1,5 +1,4 @@
 #!/usr/bin/python
-
 # -*- coding: utf-8
 
 '''
@@ -10,21 +9,21 @@ Created on 2020-06-24 11:27:58
 
 import requests
 
-class LibRequests():
-    def get(self,**kwargs):
 
+class LibRequests():
+    def get(self, **kwargs):
         '''封装get方法'''
         # 获取请求参数
         params = kwargs.get("params")
         headers = kwargs.get("headers")
         url = kwargs.get('url')
         try:
-            result = requests.get(url=url,params=params,headers=headers)
+            result = requests.get(url=url, params=params, headers=headers)
             return result
         except Exception as e:
-            print("get请求错误: %s" %e)
+            print("get请求错误: %s" % e)
 
-    def post(self,url,**kwargs):
+    def post(self, url, **kwargs):
         '''封装post方法'''
         # 获取请求参数
         params = kwargs.get("params")
@@ -32,10 +31,26 @@ class LibRequests():
         json = kwargs.get("json")
         files = kwargs.get("files")
         try:
-            result = requests.post(url,params=params,data=data,json=json,files=files)
+            result = requests.post(
+                url, params=params, data=data, json=json, files=files)
             return result
         except Exception as e:
-            print("post请求错误: %s" %e)
+            print("post请求错误: %s" % e)
+
+    def sessionPost(self, url, **kwargs):
+        '''封装session post方法'''
+        # 获取请求参数
+        params = kwargs.get("params")
+        data = kwargs.get("data")
+        # headers = kwargs.get("headers")
+        json = kwargs.get("json")
+        files = kwargs.get("files")
+        try:
+            result = requests.post(
+                url, params=params, data=data, json=json, files=files)
+            return result
+        except Exception as e:
+            print("post请求错误: %s" % e)
 
     def run_main(self, method, **kwargs):
         '''
@@ -50,7 +65,7 @@ class LibRequests():
         elif method == 'post':
             result = self.post(**kwargs)
             return result
-        else :
+        else:
             print('请求接口类型错误')
 
 # if __name__ == '__main__':
