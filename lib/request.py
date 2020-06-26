@@ -42,12 +42,13 @@ class LibRequests():
         # 获取请求参数
         params = kwargs.get("params")
         data = kwargs.get("data")
-        # headers = kwargs.get("headers")
+        headers = kwargs.get("headers")
         json = kwargs.get("json")
         files = kwargs.get("files")
         try:
-            result = requests.post(
-                url, params=params, data=data, json=json, files=files)
+            result = requests.session().post(
+                url, params=params, headers=headers, data=data, json=json, files=files)
+            # 存储 cookie token
             return result
         except Exception as e:
             print("post请求错误: %s" % e)
