@@ -24,3 +24,10 @@ if __name__ == '__main__':
     print(libHttp.getHeaders())
     libHttp.setHeader("cookie", "test——cookie")
     print(libHttp.getHeaders())
+
+    # 读取 csv
+    print(tool.LibTool().readCSV("./data/case.csv"))
+    # 读取 csv 含有指定内容的行
+    print(tool.LibTool().readCSVByLine("./data/case.csv", "url", "check"))
+
+    # 
